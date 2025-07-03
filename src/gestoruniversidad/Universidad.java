@@ -12,38 +12,38 @@ public class Universidad {
         this.departamentos = new ArrayList<>();
     }
 
-    public void agregarDepartamento(String nombre) {
-        for (Departamento d : departamentos) {
-            if (d.getNombre().equalsIgnoreCase(nombre)) {
-                System.out.println("Departamento ya existe.");
-                return;
-            }
-        }
-        departamentos.add(new Departamento(nombre));
-        System.out.println("Departamento agregado correctamente.");
-    }
-
-    public void eliminarDepartamento(String nombre) {
-        departamentos.removeIf(d -> d.getNombre().equalsIgnoreCase(nombre));
-    }
-
-    public List<Profesor> obtenerTodosProfesores() {
-        List<Profesor> todos = new ArrayList<>();
-        for (Departamento d : departamentos) {
-            todos.addAll(d.getProfesores());
-        }
-        return todos;
+    public String getNombre() {
+        return nombre;
     }
 
     public List<Departamento> getDepartamentos() {
         return departamentos;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void agregarDepartamento(String nombreDepartamento) {
+        departamentos.add(new Departamento(nombreDepartamento));
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void eliminarDepartamento(String nombreDepartamento) {
+        departamentos.removeIf(d -> d.getNombre().equalsIgnoreCase(nombreDepartamento));
+    }
+
+    public Profesor buscarProfesorPorNombre(String nombreProfesor) {
+        for (Departamento d : departamentos) {
+            for (Profesor p : d.getProfesores()) {
+                if (p.getNombre().equalsIgnoreCase(nombreProfesor)) {
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<Profesor> obtenerTodosProfesores() {
+        List<Profesor> lista = new ArrayList<>();
+        for (Departamento d : departamentos) {
+            lista.addAll(d.getProfesores());
+        }
+        return lista;
     }
 }

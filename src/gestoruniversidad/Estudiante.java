@@ -14,17 +14,6 @@ public class Estudiante {
         this.cursosInscritos = new ArrayList<>();
     }
 
-    public void inscribirseEnCurso(Curso curso) {
-        for (Curso c : cursosInscritos) {
-            if (c.getCodigo().equalsIgnoreCase(curso.getCodigo())) {
-                System.out.println("Ya estás inscrito en este curso.");
-                return;
-            }
-        }
-        cursosInscritos.add(curso);
-        curso.inscribirEstudiante(this);
-    }
-
     public String getCodigo() {
         return codigo;
     }
@@ -35,5 +24,11 @@ public class Estudiante {
 
     public List<Curso> getCursosInscritos() {
         return cursosInscritos;
+    }
+
+    public void agregarCurso(Curso curso) {
+        if (!cursosInscritos.contains(curso)) {
+            cursosInscritos.add(curso);
+        }
     }
 }

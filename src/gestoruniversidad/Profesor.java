@@ -22,7 +22,7 @@ public class Profesor {
             }
         }
         cursosImpartidos.add(curso);
-        System.out.println("Curso asignado al profesor correctamente.");
+        System.out.println("Curso asignado al profesor.");
     }
 
     public void desasignarCurso(Curso curso) {

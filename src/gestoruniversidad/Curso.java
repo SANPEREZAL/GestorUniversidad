@@ -9,34 +9,10 @@ public class Curso {
     private Profesor profesor;
     private List<Estudiante> estudiantes;
 
-    public Curso(String codigo, String nombre, Profesor profesor) {
+    public Curso(String codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.profesor = profesor;
         this.estudiantes = new ArrayList<>();
-    }
-
-    public void inscribirEstudiante(Estudiante estudiante) {
-        for (Estudiante e : estudiantes) {
-            if (e.getCodigo().equalsIgnoreCase(estudiante.getCodigo())) {
-                System.out.println("El estudiante ya está inscrito en el curso.");
-                return;
-            }
-        }
-        estudiantes.add(estudiante);
-        System.out.println("Estudiante inscrito en el curso.");
-    }
-
-    public void desinscribirEstudiante(String codigoEstudiante) {
-        estudiantes.removeIf(e -> e.getCodigo().equalsIgnoreCase(codigoEstudiante));
-    }
-
-    public void asignarProfesor(Profesor profesor) {
-        this.profesor = profesor;
-    }
-
-    public void generarReporte(GeneradorReporte generador) {
-        generador.generar(this);
     }
 
     public String getCodigo() {
@@ -51,7 +27,23 @@ public class Curso {
         return profesor;
     }
 
+    public void asignarProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
     public List<Estudiante> getEstudiantes() {
         return estudiantes;
+    }
+
+    public void inscribirEstudiante(Estudiante estudiante) {
+        if (!estudiantes.contains(estudiante)) {
+            estudiantes.add(estudiante);
+            estudiante.agregarCurso(this); // Asociación bidireccional
+        }
+    }
+
+    // Demuestra dependencia con GeneradorReporte
+    public void generarReporte(GeneradorReporte generador) {
+        generador.generar(this);
     }
 }
