@@ -1,3 +1,4 @@
+Los autores de este código son: Santiago Pérez Alvarado y Luis Eduardo Peña
 En este gestor podemos evidenciar distintas asocioaciones de clases: Universidad (Composicion con departamento) ![image](https://github.com/user-attachments/assets/4c879069-fe33-4774-9522-cdc991d8e974)
 Departamento agregacion con profesor ![image](https://github.com/user-attachments/assets/cd11e726-d4c6-4869-92db-5473f92cc69f)
 Curso dependencia con GeneradorReporte ![image](https://github.com/user-attachments/assets/e85a256b-b61e-4b7a-aaad-6517949f5f64)
